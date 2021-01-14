@@ -39,7 +39,7 @@ function App() {
           {nominations.map(movie => 
             <li>
               <p>Nominations: {movie.Title} ({movie.Year})</p>
-              <img src={movie.Poster} alt={movie.Title}/>
+              <img src={movie.Poster} alt={movie.Title} onClick={()=> setNomination(nominations => [...nominations.filter(update => update.imdbID !== movie.imdbID)])}/>
             </li>
           )}  
         </ul>
