@@ -9,7 +9,7 @@ const BASE_URL = "http://www.omdbapi.com/?apikey=";
 
 function App() {
   const [searchRes, setSearchRes] = useState({
-    query: "inception",
+    query: "",
     movies: [],
   });
 
@@ -26,10 +26,17 @@ function App() {
     .catch(error => console.log('Error:', error))
   }, []) 
 
-  console.log('state',searchRes)
   
   return (
   <div>
+    <form onSubmit = {e => e.preventDefault}>
+      <input
+        type="text"
+        placeholder="Search a film title"
+        value={searchRes.query}
+        onChange={event => setSearchRes(search => ({...search, query: event.target.value}))}
+      />
+    </form>
     <div>  
       <ul>
         <li>
