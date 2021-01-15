@@ -13,27 +13,27 @@ export default function Header (){
     justify-content: center;
     align-items:center;
     width: 100%;
-    height: 500px;
+    height: 300px;
     background-image: url(${bg});
   `
 
   const Logo = styled.div`
-    width: 200px;
-    hieght: 400px;
+    width: 100px;
+    hieght: 200px;
   `
   const MainTitle = styled.h1`
-    font-size: 108px;
+    font-size: 80px;
     font-family: "Serenity";
     color: rgb(149, 191, 70);
     line-height: 1.889;
-    align-self: flex-start;
+    align-content: flex-end;
   `
 
   const TagLine = styled.h2`
     font-size: 26px;
     font-family: "Serenity";
     color: rgb(149, 191, 70);
-    align-self: flex-start;
+    align-content: flex-start;
     margin-top: 0px;
 
   `
@@ -47,7 +47,7 @@ export default function Header (){
         The Shoppies
       </MainTitle>
       <TagLine>
-        Celebrating the top films as selected by Shopify Merchants
+        Nominate. Save. Share.
       </TagLine>
     </MainContainer>
   )

@@ -27,7 +27,7 @@ const NominationTitleHolder = styled.div`
   `
 
 
-const NominationTitle = styled.p`
+const NominationCounter = styled.p`
   align-self: flex-start;
   font-size: 36px;
   font-family: "Serenity";
@@ -62,9 +62,9 @@ return (
 
       <NominatedCollection>
         <NominationTitleHolder>
-          <NominationTitle> 
+          <NominationCounter> 
             You have {5 - nominations.length} Nominations left!
-          </NominationTitle>
+            </NominationCounter>
         </NominationTitleHolder>
         {nominations && nominations.length && nominations.map(movie => 
           <NominatedMovie>
