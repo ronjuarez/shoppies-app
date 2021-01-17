@@ -12,6 +12,7 @@ export default function Nominations({
 }) {
 
   let spots = 5 - nominations.length;
+  const LOCAL_STORAGE_ITEMS = 'localStorageState'
 
   const nomClass = classNames("nominations",{
     "nominations--completed" : spots === 0
@@ -26,6 +27,9 @@ export default function Nominations({
     return spots === 1 ?  `You have ${spots} ${result}` : `You have ${spots} ${pluralResult}`
   }
 
+  const save = () => {
+    localStorage.setItem('localStorageState', JSON.stringify(nominations))
+  }
 
 return (
     <div className="nominations-container">
@@ -34,6 +38,10 @@ return (
           <p className="nominations-counter"r> 
             {formatSpots(spots)}
           </p>
+          <Button confirm
+            onClick={save}>
+              Save
+          </Button>
         </div>
         {nominations && nominations.length && nominations.map(movie => 
           <div className="nominations-movie">

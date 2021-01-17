@@ -19,7 +19,7 @@ function App() {
   });
 
   const [nominations, setNomination] = useState([])
-
+  const LOCAL_STORAGE_ITEMS = 'localStorageState'
 
   useEffect(()=> { 
     if(searchRes.query === "") return;
@@ -32,7 +32,15 @@ function App() {
       }))
     })
     .catch(error => console.log('Error:', error))
-  }, [searchRes.query]) 
+  }, [searchRes.query])
+  
+  useEffect(() => {
+    const storageItems = JSON.parse(localStorage.getItem('localStorageState'))
+    if (storageItems) {
+        setNomination(storageItems)
+    }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
 
   return (
