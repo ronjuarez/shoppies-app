@@ -4,47 +4,55 @@ import Button from '../Button';
 
 const SearchResultsContainer = styled.div`
   width: 100%;
-  height: 1200px;
+  height: 600px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  align-self: flex-start;
+  font-size: 14px;
+  font-family: "Serenity";
+  color: black;
+  font-weight: bold;
   `
 
 const SearchResults = styled.div`
-  margin: 50px;
   width: 95%;
-  height: 80%;
+  height: 95%;
   border-radius: 30px;
   background-color: rgb(232, 232, 232);
-  // opacity: 0.4;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   flex-direction: row;
+  order: 1;
   `
 
 const LiveQueryHolder = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
   `
 
 
 const LiveQuery = styled.p`
   align-self: center;
-  font-size: 36px;
+  font-size: 24px;
   font-family: "Serenity";
   color: black;
   font-weight: bold;
-  margin-left: 30%; 
   `
 
 const MovieResult = styled.div`
-  width: 300px;
-  height: 365px;
-  justify-content: center;
+width: 215px;
+height: 260px;
+display:flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
   `
 const ResultPoster = styled.img`
-  width: 200px;
-  height: 265px;
+  width: 100px;
+  height: 133px;
   `
 
 
