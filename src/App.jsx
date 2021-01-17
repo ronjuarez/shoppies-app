@@ -7,7 +7,7 @@ import Header from "./components/Header"
 
 
 const TOKEN = process.env.REACT_APP_TOKEN;
-const BASE_URL = "http://www.omdbapi.com/?apikey=";
+const BASE_URL = "https://www.omdbapi.com/?apikey=";
 
 
 function App() {
