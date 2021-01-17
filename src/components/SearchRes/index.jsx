@@ -17,7 +17,7 @@ const SearchResultsContainer = styled.div`
 
 const SearchResults = styled.div`
   width: 95%;
-  height: 95%;
+  height: 85%;
   border-radius: 30px;
   background-color: rgb(232, 232, 232);
   display: flex;
@@ -42,14 +42,22 @@ const LiveQuery = styled.p`
   font-weight: bold;
   `
 
-const MovieResult = styled.div`
-width: 215px;
-height: 260px;
-display:flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+const MaxResults = styled.p`
+  align-self: center;
+  font-size: 24px;
+  font-family: "Serenity";
+  color: red;
+  font-weight: bold;
   `
+
+const MovieResult = styled.div`
+  width: 215px;
+  height: 260px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+    `
 const ResultPoster = styled.img`
   width: 100px;
   height: 133px;
@@ -64,7 +72,9 @@ export default function SearchRes({
 }) {
     
   const nominate = (movie) => {
+    if (nominations.length < 5) {
     setNomination(nominations => [...nominations, movie])
+    }
   }
 
   const isNominated = (movie) => {
@@ -79,12 +89,17 @@ export default function SearchRes({
   return (
     <SearchResultsContainer>
         <LiveQueryHolder>
+          {nominations.length <5 ? 
           <LiveQuery>
             {searchRes.query ? 
               `Search Results for ${searchRes.query}` :
               `Type a title for Search Results`
             }
-          </LiveQuery>
+          </LiveQuery> :
+          <MaxResults>
+              You have reached the maximum ammount of nominations!
+          </MaxResults>
+          }
         </LiveQueryHolder>
       <SearchResults>
         {searchRes.movies && searchRes.movies.length > 0 && searchRes.movies.map(movie => 
