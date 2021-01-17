@@ -1,50 +1,8 @@
-import styled from "styled-components";
-
-const NomContainer = styled.div`
-  width: 100%;
-  height: 600px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  `
-
-const NominatedCollection = styled.div`
-  margin: 50px;
-  width: 95%;
-  height: 80%;
-  border-radius: 30px;
-  background-color: rgb(232, 232, 232);
-  // opacity: 0.4;
-  display: flex;
-  flex-wrap: wrap-reverse;
-  justify-content: space-around;
-  flex-direction: row;
-  `
-
-const NominationTitleHolder = styled.div`
-  align-self: flex-start;
-  width: 100%;
-  `
+import classNames from 'classnames'
+import Button from '../Button';
+import "./Nominations.scss";
 
 
-const NominationCounter = styled.p`
-  align-self: flex-start;
-  font-size: 36px;
-  font-family: "Serenity";
-  color: black;
-  font-weight: bold;
-  margin-left: 30px 
-  `
-
-const NominatedMovie = styled.div`
-  width: 300px;
-  height: 365px;
-  justify-content: center;
-`
-const MoviePoster = styled.img`
-  width: 200px;
-  height: 265px;
-`
 
 
 
@@ -53,31 +11,47 @@ export default function Nominations({
   setNomination
 }) {
 
-  // remove nom function
+  let spots = 5 - nominations.length;
 
+  const nomClass = classNames("nominations",{
+    "nominations--completed" : spots === 0
+  })
+
+  const formatSpots = (spots) => {
+    const pluralResult = "nominations remaining!"
+    const result = "nomination remaining!"
+    if (spots === 0) {
+      return `You have filled your ballot! Save now?`
+    } 
+    return spots === 1 ?  `You have ${spots} ${result}` : `You have ${spots} ${pluralResult}`
+  }
 
 
 return (
-    <NomContainer>
-
-      <NominatedCollection>
-        <NominationTitleHolder>
-          <NominationCounter> 
-            You have {5 - nominations.length} Nominations left!
-            </NominationCounter>
-        </NominationTitleHolder>
+    <div className="nominations-container">
+      <div className={nomClass}>
+        <div className="nominations-titleholder">
+          <p className="nominations-counter"r> 
+            {formatSpots(spots)}
+          </p>
+        </div>
         {nominations && nominations.length && nominations.map(movie => 
-          <NominatedMovie>
+          <div className="nominations-movie">
             <p>{movie.Title} ({movie.Year})</p>
-            <MoviePoster 
+            <img
+              className="movie-poster"
               src={movie.Poster !== "N/A" ? 
               movie.Poster : `https://www.prokerala.com/movies/assets/img/no-poster-available.jpg`} 
               alt={movie.Title} 
-              onClick={()=> setNomination(nominations => [...nominations.filter(update => update.imdbID !== movie.imdbID)])}
+              
             />
-          </NominatedMovie>
+            <Button danger
+              onClick={()=> setNomination(nominations => [...nominations.filter(update => update.imdbID !== movie.imdbID)])}>
+                Remove
+            </Button>
+          </div>
         )}
-      </NominatedCollection>
-    </NomContainer>
+      </div>
+    </div>
   )
 }
