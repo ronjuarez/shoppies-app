@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import styled from "styled-components";
 import Nominations from './components/Nominations'
 import SearchBar from "./components/SearchBar";
 import SearchRes from "./components/SearchRes";
