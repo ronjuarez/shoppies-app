@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Nominations from './components/Nominations'
@@ -19,10 +19,11 @@ function App() {
   });
 
   const [nominations, setNomination] = useState([])
-  const LOCAL_STORAGE_ITEMS = 'localStorageState'
+
+  const ref = useRef('');
 
   useEffect(()=> { 
-    if(searchRes.query === "") return;
+    if(ref.current === "" && searchRes.query === "") return;
 
     axios.get(`${BASE_URL}${TOKEN}&s=${searchRes.query}&type=movie`)
     .then(apiSearchResults => {
@@ -32,6 +33,8 @@ function App() {
       }))
     })
     .catch(error => console.log('Error:', error))
+    
+    ref.current = searchRes.query
   }, [searchRes.query])
   
   useEffect(() => {
@@ -40,7 +43,7 @@ function App() {
         setNomination(storageItems)
     }
 // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [])
+}, [localStorage])
 
 
   return (
