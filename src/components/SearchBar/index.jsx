@@ -3,7 +3,7 @@ import styled from "styled-components";
 const SearchForm = styled.form`
   display: flex;
   width: 100%;
-  height: 120px;
+  height: 50px;
   `
 
 const StyledSearchBar = styled.input`
@@ -11,11 +11,11 @@ const StyledSearchBar = styled.input`
   border-width: 2px;
   border-color: rgb(0, 0, 0);
   border-radius: 15px;
-  width: 727px;
-  height: 108px;
+  width: 500px;
+  height: 36px;
   background-color: rgb(255, 255, 255);
   &::-webkit-input-placeholder {
-    font-size: 50px;
+    font-size: 24px;
     font-family: "Serenity";
     color: rgb(38, 38, 38);
 }

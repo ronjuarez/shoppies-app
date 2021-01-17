@@ -6,6 +6,7 @@ import SearchBar from "./components/SearchBar";
 import SearchRes from "./components/SearchRes";
 import Header from "./components/Header"
 
+
 const TOKEN = process.env.REACT_APP_TOKEN;
 const BASE_URL = "http://www.omdbapi.com/?apikey=";
 
@@ -33,7 +34,7 @@ function App() {
     .catch(error => console.log('Error:', error))
   }, [searchRes.query]) 
 
-  
+
   return (
     <div>
       <div>
@@ -55,6 +56,7 @@ function App() {
         <SearchRes
           searchRes={searchRes}
           setNomination={setNomination}
+          nominations={nominations}
         />
       </div>
     </div>

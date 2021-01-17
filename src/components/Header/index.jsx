@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import bg from "../../assets/bg-image.png";
-import logoimg from "../../assets/Logo.png"
+// import bg from "../../assets/bg-image.png";
+// import logoimg from "../../assets/Logo.png"
 
 
 
@@ -14,7 +14,6 @@ export default function Header (){
     align-items:center;
     width: 100%;
     height: 300px;
-    background-image: url(${bg});
   `
 
   const Logo = styled.div`
@@ -41,7 +40,7 @@ export default function Header (){
   return (
     <MainContainer>
       <Logo>
-        <img src={logoimg}/>
+        <img src={"images/Logo.png"}/>
       </Logo>
       <MainTitle>
         The Shoppies

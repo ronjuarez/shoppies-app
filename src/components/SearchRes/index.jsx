@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import Button from '../Button';
+
 
 const SearchResultsContainer = styled.div`
   width: 100%;
@@ -16,7 +18,7 @@ const SearchResults = styled.div`
   background-color: rgb(232, 232, 232);
   // opacity: 0.4;
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   justify-content: space-around;
   flex-direction: row;
   `
@@ -39,18 +41,33 @@ const MovieResult = styled.div`
   width: 300px;
   height: 365px;
   justify-content: center;
-`
+  `
 const ResultPoster = styled.img`
   width: 200px;
   height: 265px;
-`
+  `
+
 
 
 export default function SearchRes({
   searchRes,
-  setNomination
+  setNomination,
+  nominations
 }) {
     
+  const nominate = (movie) => {
+    setNomination(nominations => [...nominations, movie])
+  }
+
+  const isNominated = (movie) => {
+    for (let nomination of nominations) {
+      if(movie.imdbID === nomination.imdbID){
+        return true
+      }
+    }
+    return false
+  }
+
   return (
     <SearchResultsContainer>
         <LiveQueryHolder>
@@ -63,15 +80,19 @@ export default function SearchRes({
         </LiveQueryHolder>
       <SearchResults>
         {searchRes.movies && searchRes.movies.length && searchRes.movies.map(movie => 
-          <MovieResult>    
-            <p>{movie.Title} ({movie.Year})</p>
-            <ResultPoster 
-              src={movie.Poster !== "N/A" ? 
-              movie.Poster : `https://www.prokerala.com/movies/assets/img/no-poster-available.jpg`} 
-              alt={movie.Title} 
-              onClick={()=> setNomination(nominations => [...nominations, movie])}
-            />
-          </MovieResult>  
+        <MovieResult>    
+          <p>{movie.Title} ({movie.Year})</p>
+          <ResultPoster 
+            src={movie.Poster !== "N/A" ? 
+            movie.Poster : `https://www.prokerala.com/movies/assets/img/no-poster-available.jpg`} 
+            alt={movie.Title} 
+          />
+          <Button confirm 
+            disabled={isNominated(movie)}
+            onClick={()=> nominate(movie)}>
+            Nominate
+          </Button>
+        </MovieResult>            
         )}
       </SearchResults>
     </SearchResultsContainer>
