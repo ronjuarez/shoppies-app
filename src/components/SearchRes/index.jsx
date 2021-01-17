@@ -79,7 +79,7 @@ export default function SearchRes({
           </LiveQuery>
         </LiveQueryHolder>
       <SearchResults>
-        {searchRes.movies && searchRes.movies.length && searchRes.movies.map(movie => 
+        {searchRes.movies && searchRes.movies.length > 0 && searchRes.movies.map(movie => 
         <MovieResult>    
           <p>{movie.Title} ({movie.Year})</p>
           <ResultPoster 

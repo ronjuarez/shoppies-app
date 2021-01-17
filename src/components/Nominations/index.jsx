@@ -43,7 +43,7 @@ return (
               Save
           </Button>
         </div>
-        {nominations && nominations.length && nominations.map(movie => 
+        {nominations && nominations.length > 0 && nominations.map(movie => 
           <div className="nominations-movie">
             <p>{movie.Title} ({movie.Year})</p>
             <img

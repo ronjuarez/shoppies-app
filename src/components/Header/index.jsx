@@ -13,15 +13,15 @@ export default function Header (){
     justify-content: center;
     align-items:center;
     width: 100%;
-    height: 300px;
+    height: 150px;
   `
 
-  const Logo = styled.div`
-    width: 100px;
-    hieght: 200px;
+  const Logo = styled.img`
+    width: 50px;
+    hieght: 100px;
   `
   const MainTitle = styled.h1`
-    font-size: 80px;
+    font-size: 40px;
     font-family: "Serenity";
     color: rgb(149, 191, 70);
     line-height: 1.889;
@@ -29,7 +29,7 @@ export default function Header (){
   `
 
   const TagLine = styled.h2`
-    font-size: 26px;
+    font-size: 14px;
     font-family: "Serenity";
     color: rgb(149, 191, 70);
     align-content: flex-start;
@@ -39,9 +39,8 @@ export default function Header (){
 
   return (
     <MainContainer>
-      <Logo>
-        <img src={"images/Logo.png"}/>
-      </Logo>
+      <Logo
+        src={"images/Logo.png"}/>
       <MainTitle>
         The Shoppies
       </MainTitle>
