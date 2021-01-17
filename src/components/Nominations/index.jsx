@@ -30,6 +30,11 @@ export default function Nominations({
     localStorage.setItem('localStorageState', JSON.stringify(nominations))
   }
 
+  const clear = () => {
+    setNomination([])
+    localStorage.setItem('localStorageState', JSON.stringify(nominations))
+  }
+
 return (
     <div className="nominations-container">
       <div className={nomClass}>
@@ -41,7 +46,14 @@ return (
             <Button confirm
               onClick={save}>
               Save
-          </Button> : null}
+          </Button> 
+          : null}
+          {spots === 0 ?
+            <Button danger
+              onClick={clear}>
+              Reset
+          </Button> 
+          : null}
         </div>
         {nominations && nominations.length > 0 && nominations.map(movie => 
           <div className="nominations-movie">
