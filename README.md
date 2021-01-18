@@ -13,7 +13,7 @@ Shoppies is a single page app where users can nominate 5 films and save them to 
 ---
 
 # To run shoppies locally:.
-1) Clone the [nbrly](https://github.com/ronjuarez/nbrly) front-end repo.
+1) Clone the [shoppies](https://github.com/ronjuarez/shoppies-app) front-end repo.
 2) Installdependencies by running `npm i`.
 3) Run app server using `npm start`
 
